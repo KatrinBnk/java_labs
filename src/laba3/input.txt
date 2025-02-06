@@ -1,0 +1,2 @@
+C:\java_labs\java_labs\src\laba3\logger.txt
+1 3 12 -1 -2 а 12  -7 -1 -2

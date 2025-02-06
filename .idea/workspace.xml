@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java_labs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/HelloWorldApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba1_2/Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba3/JavaApplication12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba3/JavaApplication13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba3/Laba3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba3/TestEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba3/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba3/logger.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2seflR3hUduC9sChp526brOtuhG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.JavaApplication12.executor": "Run",
+    "Application.JavaApplication13.executor": "Run",
+    "Application.Laba1.executor": "Run",
+    "Application.Laba1_2.Laba2.executor": "Run",
+    "Application.Laba2.executor": "Run",
+    "Application.Laba2_test1.executor": "Run",
+    "Application.Laba3.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.TestEvent.executor": "Run",
+    "Application.TestExc.executor": "Run",
+    "Application.TestInterface.executor": "Run",
+    "Application.TestInterface2.executor": "Run",
+    "Application.TestMyExc.executor": "Run",
+    "Application.laba1_2.Laba2.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.toDoOptions",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\java_labs\java_labs\src\laba3" />
+      <recent name="C:\java_labs\java_labs\src\laba1_2" />
+      <recent name="C:\java_labs\java_labs\src" />
+      <recent name="C:\java_labs\java_labs\src\Laba1_2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Laba3">
+    <configuration name="JavaApplication12" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba3.JavaApplication12" />
+      <module name="java_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JavaApplication13" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba3.JavaApplication13" />
+      <module name="java_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Laba1" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Laba1" />
+      <module name="java_labs" />
+      <option name="PROGRAM_PARAMETERS" value="1 2 3 -4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Laba3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba3.Laba3" />
+      <module name="java_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEvent" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba3.TestEvent" />
+      <module name="java_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="laba1_2.Laba2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba1_2.Laba2" />
+      <module name="java_labs" />
+      <option name="PROGRAM_PARAMETERS" value="12 -1 4 " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba1_2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Laba3" />
+        <item itemvalue="Application.TestEvent" />
+        <item itemvalue="Application.JavaApplication12" />
+        <item itemvalue="Application.JavaApplication13" />
+        <item itemvalue="Application.laba1_2.Laba2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="" />
+      <created>1738821115095</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738821115095</updated>
+      <workItem from="1738821116228" duration="16025000" />
+      <workItem from="1738848074007" duration="318000" />
+      <workItem from="1738848412656" duration="336000" />
+      <workItem from="1738849258616" duration="5198000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
