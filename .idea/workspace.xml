@@ -4,31 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java_labs.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/HelloWorldApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Laba2_test5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba1_2/Test1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba3/JavaApplication12.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba3/JavaApplication13.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba3/Laba3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba3/TestEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba3/input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/laba3/logger.txt" afterDir="false" />
+    <list default="true" id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="Done Laba1_2 &amp; Laba3">
+      <change afterPath="$PROJECT_DIR$/src/laba4/Net.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba4/TCPClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba4/TCPServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba4/TestThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba4/UDPClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/laba4/UDPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,12 +48,18 @@
     "Application.Laba2_test1.executor": "Run",
     "Application.Laba3.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.Net.executor": "Run",
+    "Application.TCPClient.executor": "Run",
+    "Application.TCPServer.executor": "Run",
     "Application.Test.executor": "Run",
     "Application.TestEvent.executor": "Run",
     "Application.TestExc.executor": "Run",
     "Application.TestInterface.executor": "Run",
     "Application.TestInterface2.executor": "Run",
     "Application.TestMyExc.executor": "Run",
+    "Application.TestThread.executor": "Run",
+    "Application.UDPClient.executor": "Run",
+    "Application.UDPServer.executor": "Run",
     "Application.laba1_2.Laba2.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -80,7 +70,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.toDoOptions",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -92,33 +82,7 @@
       <recent name="C:\java_labs\java_labs\src\Laba1_2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Laba3">
-    <configuration name="JavaApplication12" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="laba3.JavaApplication12" />
-      <module name="java_labs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="laba3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JavaApplication13" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="laba3.JavaApplication13" />
-      <module name="java_labs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="laba3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.UDPClient">
     <configuration name="Laba1" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Laba1" />
       <module name="java_labs" />
@@ -127,12 +91,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Laba3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="laba3.Laba3" />
+    <configuration name="Net" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba4.Net" />
       <module name="java_labs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="laba3.*" />
+          <option name="PATTERN" value="laba4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,12 +104,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestEvent" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="laba3.TestEvent" />
+    <configuration name="TCPClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba4.TCPClient" />
       <module name="java_labs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="laba3.*" />
+          <option name="PATTERN" value="laba4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -153,13 +117,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="laba1_2.Laba2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="laba1_2.Laba2" />
+    <configuration name="TCPServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba4.TCPServer" />
       <module name="java_labs" />
-      <option name="PROGRAM_PARAMETERS" value="12 -1 4 " />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="laba1_2.*" />
+          <option name="PATTERN" value="laba4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba4.UDPClient" />
+      <module name="java_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba4.UDPServer" />
+      <module name="java_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Laba3" />
-        <item itemvalue="Application.TestEvent" />
-        <item itemvalue="Application.JavaApplication12" />
-        <item itemvalue="Application.JavaApplication13" />
-        <item itemvalue="Application.laba1_2.Laba2" />
+        <item itemvalue="Application.UDPClient" />
+        <item itemvalue="Application.UDPServer" />
+        <item itemvalue="Application.TCPServer" />
+        <item itemvalue="Application.TCPClient" />
+        <item itemvalue="Application.Net" />
       </list>
     </recent_temporary>
   </component>
@@ -196,11 +185,25 @@
       <workItem from="1738821116228" duration="16025000" />
       <workItem from="1738848074007" duration="318000" />
       <workItem from="1738848412656" duration="336000" />
-      <workItem from="1738849258616" duration="5198000" />
+      <workItem from="1738849258616" duration="5657000" />
+      <workItem from="1738855307041" duration="690000" />
     </task>
+    <task id="LOCAL-00001" summary="Done Laba1_2 &amp; Laba3">
+      <option name="closed" value="true" />
+      <created>1738854581037</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738854581038</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Done Laba1_2 &amp; Laba3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done Laba1_2 &amp; Laba3" />
   </component>
 </project>
