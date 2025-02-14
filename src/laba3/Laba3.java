@@ -136,10 +136,10 @@ public class Laba3 {
             throw new RuntimeException(e);
         }
 
+        logEventToAllSources(eventSources, "Обращение к указанному массиву: вычисление сумм.");
+
         int evenNegativeSum = 0;
         int oddNegativeSum = 0;
-
-        logEventToAllSources(eventSources, "Обращение к указанному массиву: вычисление сумм.");
 
         for (int num : numbers) {
             if (num < 0) {
