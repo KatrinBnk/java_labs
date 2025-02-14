@@ -120,8 +120,8 @@ public class Laba3 {
                 // Считываем вторую строку, содержащую числа
                 line = br.readLine();
                 if (line != null) {
-                    String[] tokens = line.split("\\s+");
-                    for (String token : tokens) {
+                    String[] items = line.split("\\s+");
+                    for (String token : items) {
                         try {
                             numbers.add(Integer.parseInt(token.trim()));
                         } catch (NumberFormatException e) {
