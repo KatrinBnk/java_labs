@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="Done examples for laba4">
+    <list default="true" id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="Update laba3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/laba3/Laba3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laba3/Laba3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/laba3/logger.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/laba3/logger.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +55,7 @@
     "Application.UDPClient.executor": "Run",
     "Application.UDPServer.executor": "Run",
     "Application.laba1_2.Laba2.executor": "Run",
+    "Application.tets.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.codeium.enabled": "true",
@@ -94,19 +94,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="laba3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TCPClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="laba4.TCPClient" />
-      <module name="java_labs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="laba4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -153,13 +140,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="tets" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="laba3.tets" />
+      <module name="java_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="laba3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Laba3" />
+        <item itemvalue="Application.tets" />
         <item itemvalue="Application.UDPClient" />
         <item itemvalue="Application.UDPServer" />
         <item itemvalue="Application.TCPServer" />
-        <item itemvalue="Application.TCPClient" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +189,9 @@
       <workItem from="1739172357335" duration="39000" />
       <workItem from="1739456525518" duration="353000" />
       <workItem from="1739518245818" duration="2748000" />
-      <workItem from="1739526019997" duration="18000" />
+      <workItem from="1739526019997" duration="902000" />
+      <workItem from="1739526948058" duration="1635000" />
+      <workItem from="1739533486339" duration="7364000" />
     </task>
     <task id="LOCAL-00001" summary="Done Laba1_2 &amp; Laba3">
       <option name="closed" value="true" />
@@ -207,7 +209,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738856084416</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update laba3">
+      <option name="closed" value="true" />
+      <created>1739526058088</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739526058088</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update laba3">
+      <option name="closed" value="true" />
+      <created>1739526181608</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739526181608</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +234,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Done Laba1_2 &amp; Laba3" />
     <MESSAGE value="Done examples for laba4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done examples for laba4" />
+    <MESSAGE value="Update laba3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update laba3" />
   </component>
 </project>
