@@ -13,24 +13,19 @@ package laba3;
 import java.io.*;
 import java.util.*;
 
-//Интерфейс события
-interface IEventListener {
-    void onEvent(String message);
-}
-
 // Интерфейс для обработки события "Обращение к потоку вывода на консоль"
 interface IConsoleOutputEvent {
-    void handleConsoleOutput();
+    void handleConsoleOutput(String message, String filePath, Boolean... isDeferredMessage);
 }
 
 // Интерфейс для обработки события "Обращение к массиву"
 interface IArrayAccessEvent {
-    void handleArrayAccess();
+    void handleArrayAccess(String message, String filePath, Boolean... isDeferredMessage);
 }
 
 // Интерфейс для обработки события "Обращение к потоку ввода с консоли"
 interface IConsoleInputEvent {
-    void handleConsoleInput();
+    void handleConsoleInput(String message, String filePath, Boolean... isDeferredMessage);
 }
 
 /**
@@ -51,39 +46,81 @@ interface IConsoleInputEvent {
 // Источник события для вывода на консоль
 class ConsoleOutputSource {
     IConsoleOutputEvent iEventHandler;
+    List<String> deferredMessages = new ArrayList<>();
 
     ConsoleOutputSource(IConsoleOutputEvent iEventHandler) {
         this.iEventHandler = iEventHandler;
     }
 
-    public void generateEvent() {
-        iEventHandler.handleConsoleOutput();
+    public void generateEvent(String message, String filePath) {
+        if (filePath == null || filePath.isEmpty()) {
+            deferredMessages.add(message);
+            iEventHandler.handleConsoleOutput(message, null);
+        } else {
+            iEventHandler.handleConsoleOutput(message, filePath);
+        }
+    }
+
+    public void processDeferredMessages(String filePath) {
+        Collections.reverse(deferredMessages);
+        for (String message : deferredMessages) {
+            iEventHandler.handleConsoleOutput(message, filePath, Boolean.TRUE);
+        }
+        deferredMessages.clear();
     }
 }
 
 // Источник события для работы с массивом
 class ArrayAccessSource {
     IArrayAccessEvent iEventHandler;
+    List<String> deferredMessages = new ArrayList<>();
 
     ArrayAccessSource(IArrayAccessEvent iEventHandler) {
         this.iEventHandler = iEventHandler;
     }
 
-    void generateEvent() {
-        iEventHandler.handleArrayAccess();
+    public void generateEvent(String message, String filePath) {
+        if (filePath == null || filePath.isEmpty()) {
+            deferredMessages.add(message);
+            iEventHandler.handleArrayAccess(message, null);
+        } else {
+            iEventHandler.handleArrayAccess(message, filePath);
+        }
+    }
+
+    public void processDeferredMessages(String filePath) {
+        Collections.reverse(deferredMessages);
+        for (String message : deferredMessages) {
+            iEventHandler.handleArrayAccess(message, filePath, Boolean.TRUE);
+        }
+        deferredMessages.clear();
     }
 }
 
 // Источник события для ввода с консоли
 class ConsoleInputSource {
     IConsoleInputEvent iEventHandler;
+    List<String> deferredMessages = new ArrayList<>();
 
     public ConsoleInputSource(IConsoleInputEvent iEventHandler) {
         this.iEventHandler = iEventHandler;
     }
 
-    public void generateEvent() {
-        iEventHandler.handleConsoleInput();
+    public void generateEvent(String message, String filePath) {
+        if (filePath == null || filePath.isEmpty()) {
+            deferredMessages.add(message);
+            iEventHandler.handleConsoleInput(message, null);
+        } else {
+            iEventHandler.handleConsoleInput(message, filePath);
+        }
+    }
+
+    public void processDeferredMessages(String filePath) {
+        Collections.reverse(deferredMessages);
+        for (String message : deferredMessages) {
+            iEventHandler.handleConsoleInput(message, filePath, Boolean.TRUE);
+        }
+        deferredMessages.clear();
     }
 }
 
@@ -101,28 +138,73 @@ class Receiver implements IEv {// Класс приёмника события
 // Приемник для обработки события вывода на консоль
 class ConsoleOutputReceiver implements IConsoleOutputEvent {
 
-    //TODO: заменить на нормальную адаптацию, чтобы не дублировать вывод и в консоль, и в файл по сто миллионов раз
-    @Override
-    public void handleConsoleOutput() {
-        System.out.println("Обращение к потоку вывода на консоль");
+    public void handleConsoleOutput(String message, String filePath, Boolean... isDeferredMessage) {
+
+        if (isDeferredMessage.length == 0 || !isDeferredMessage[0] || filePath == null) {
+            System.out.println("\u001B[33m" + "Обращение к потоку вывода на консоль: " + message + "\u001B[0m");
+        }
+
+        if (filePath != null) {
+            // Записываем в файл
+            try {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+                    writer.write(message);
+                    writer.newLine();
+                }
+            } catch (IOException e) {
+                System.out.println("Ошибка при записи в файл: " + e.getMessage());
+            }
+        }
     }
 }
 
 // Приемник для обработки события работы с массивом
 class ArrayAccessReceiver implements IArrayAccessEvent {
-    //TODO: заменить на нормальную адаптацию, чтобы не дублировать вывод и в консоль, и в файл по сто миллионов раз
-    @Override
-    public void handleArrayAccess() {
-        System.out.println("Обращение к массиву");
+
+    public void handleArrayAccess(String message, String filePath, Boolean... isDeferredMessage) {
+
+        if (isDeferredMessage.length == 0 || !isDeferredMessage[0]  || filePath == null) {
+            System.out.println("\u001B[33m" + "Обращение к массиву: " + message + "\u001B[0m");
+        }
+
+        if (filePath != null) {
+            // Записываем в файл
+            try {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+                    writer.write(message);
+                    writer.newLine();  // Перевод строки
+                }
+            } catch (IOException e) {
+                System.out.println("Ошибка при записи в файл: " + e.getMessage());
+            }
+        }
     }
 }
 
 // Приемник для обработки события ввода с консоли
 class ConsoleInputReceiver implements IConsoleInputEvent {
-    public void handleConsoleInput() {
-        System.out.println("Обращение к потоку ввода с консоли");
+    public void handleConsoleInput(String message, String filePath, Boolean... isDeferredMessage) {
+
+        if (isDeferredMessage.length == 0 || !isDeferredMessage[0]  || filePath == null) {
+            System.out.println("\u001B[33m" + "Обращение к потоку ввода с консоли: " + message + "\u001B[0m");
+        }
+
+        // Записываем в файл
+        if (filePath != null) {
+            // Записываем в файл
+            try {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+                    writer.write(message);
+                    writer.newLine();  // Перевод строки
+                }
+            } catch (IOException e) {
+                System.out.println("Ошибка при записи в файл: " + e.getMessage());
+            }
+        }
     }
 }
+
+// c:\java_labs\java_labs\src\laba3\input.txt
 
 public class Laba3 {
 
@@ -139,10 +221,9 @@ public class Laba3 {
         ConsoleInputSource consoleInputSource = new ConsoleInputSource(consoleInputReceiver);
 
         Scanner scanner = new Scanner(System.in);
-        // TODO: логи, которые происходили до создания файла с логами
-        consoleOutputSource.generateEvent();
+        consoleOutputSource.generateEvent(" вывод сообщения 'Введите путь к файлу с данными:'", null);
         System.out.print("Введите путь к файлу с данными: ");
-        consoleInputSource.generateEvent();
+        consoleInputSource.generateEvent(" запрос пути к файлу с данными ", null);
         String filePath = scanner.nextLine();
 
         String logFilePath;
@@ -159,6 +240,9 @@ public class Laba3 {
                     throw new RuntimeException("Файл пуст.");
                 }
 
+                consoleOutputSource.processDeferredMessages(logFilePath);
+                consoleInputSource.processDeferredMessages(logFilePath);
+
 
                 // Считываем вторую строку, содержащую числа
                 line = br.readLine();
@@ -167,10 +251,10 @@ public class Laba3 {
                     for (String token : tokens) {
                         try {
                             numbers.add(Integer.parseInt(token.trim()));
-                            arrayAccessSource.generateEvent();
+                            arrayAccessSource.generateEvent("добавление элемента " + token, logFilePath);
                         } catch (NumberFormatException e) {
-                            consoleOutputSource.generateEvent();
-                            System.out.println("Некорректное число: " + token);
+                            consoleOutputSource.generateEvent("встречен некорректный элемент '" + token + "'", logFilePath);
+                            System.out.println("Некорректный элемент: " + token);
                         }
                     }
                 }
@@ -184,7 +268,7 @@ public class Laba3 {
         int evenNegativeSum = 0;
         int oddNegativeSum = 0;
 
-        arrayAccessSource.generateEvent();
+        arrayAccessSource.generateEvent("обращение к массиву", logFilePath);
         for (int num : numbers) {
             if (num < 0) {
                 if (num % 2 == 0) {
@@ -195,159 +279,9 @@ public class Laba3 {
             }
         }
 
-        consoleOutputSource.generateEvent();
+        consoleOutputSource.generateEvent("вывод суммы четных и отрицательных чисел = " + evenNegativeSum, logFilePath);
         System.out.println("Сумма четных и отрицательных чисел = " + evenNegativeSum);
-        consoleOutputSource.generateEvent();
+        consoleOutputSource.generateEvent("вывод суммы нечетных и отрицательных чисел = " + oddNegativeSum, logFilePath);
         System.out.println("Сумма нечетных и отрицательных чисел = " + oddNegativeSum);
     }
 }
-
-
-/*
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-// Интерфейсы для каждого события
-interface IConsoleOutputEvent {
-    void handleConsoleOutput();
-}
-
-interface IArrayAccessEvent {
-    void handleArrayAccess();
-}
-
-interface IConsoleInputEvent {
-    void handleConsoleInput();
-}
-
-// Общий интерфейс для обработки событий
-interface IEventHandler {
-    void handleEvent(String message);
-}
-
-// Класс для обработки события вывода в консоль и записи в файл
-class ConsoleAndFileEventHandler implements IEventHandler {
-    private String fileName;
-
-    public ConsoleAndFileEventHandler(String fileName) {
-        this.fileName = fileName;
-    }
-
-    @Override
-    public void handleEvent(String message) {
-        // Выводим в консоль
-        System.out.println(message);
-        // Записываем в файл
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, true))) {
-            writer.println(message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-// Источник события для вывода на консоль
-class ConsoleOutputSource {
-    private IConsoleOutputEvent eventHandler;
-
-    public ConsoleOutputSource(IConsoleOutputEvent eventHandler) {
-        this.eventHandler = eventHandler;
-    }
-
-    public void generateEvent() {
-        eventHandler.handleConsoleOutput();
-    }
-}
-
-// Источник события для работы с массивом
-class ArrayAccessSource {
-    private IArrayAccessEvent eventHandler;
-
-    public ArrayAccessSource(IArrayAccessEvent eventHandler) {
-        this.eventHandler = eventHandler;
-    }
-
-    public void generateEvent() {
-        eventHandler.handleArrayAccess();
-    }
-}
-
-// Источник события для ввода с консоли
-class ConsoleInputSource {
-    private IConsoleInputEvent eventHandler;
-
-    public ConsoleInputSource(IConsoleInputEvent eventHandler) {
-        this.eventHandler = eventHandler;
-    }
-
-    public void generateEvent() {
-        eventHandler.handleConsoleInput();
-    }
-}
-
-// Приемник для обработки события вывода на консоль
-class ConsoleOutputReceiver implements IConsoleOutputEvent {
-    private IEventHandler eventHandler;
-
-    public ConsoleOutputReceiver(IEventHandler eventHandler) {
-        this.eventHandler = eventHandler;
-    }
-
-    @Override
-    public void handleConsoleOutput() {
-        eventHandler.handleEvent("Обращение к потоку вывода на консоль");
-    }
-}
-
-// Приемник для обработки события работы с массивом
-class ArrayAccessReceiver implements IArrayAccessEvent {
-    private IEventHandler eventHandler;
-
-    public ArrayAccessReceiver(IEventHandler eventHandler) {
-        this.eventHandler = eventHandler;
-    }
-
-    @Override
-    public void handleArrayAccess() {
-        eventHandler.handleEvent("Обращение к массиву");
-    }
-}
-
-// Приемник для обработки события ввода с консоли
-class ConsoleInputReceiver implements IConsoleInputEvent {
-    private IEventHandler eventHandler;
-
-    public ConsoleInputReceiver(IEventHandler eventHandler) {
-        this.eventHandler = eventHandler;
-    }
-
-    @Override
-    public void handleConsoleInput() {
-        eventHandler.handleEvent("Обращение к потоку ввода с консоли");
-    }
-}
-
-public class TestEvent {
-    public static void main(String[] args) {
-        // Создаем общий обработчик для вывода в консоль и записи в файл
-        ConsoleAndFileEventHandler handler = new ConsoleAndFileEventHandler("output.txt");
-
-        // Создаем приемники для каждого типа события, передаем комбинированный обработчик
-        ConsoleOutputReceiver consoleOutputReceiver = new ConsoleOutputReceiver(handler);
-        ArrayAccessReceiver arrayAccessReceiver = new ArrayAccessReceiver(handler);
-        ConsoleInputReceiver consoleInputReceiver = new ConsoleInputReceiver(handler);
-
-        // Создаем источники для каждого события
-        ConsoleOutputSource consoleOutputSource = new ConsoleOutputSource(consoleOutputReceiver);
-        ArrayAccessSource arrayAccessSource = new ArrayAccessSource(arrayAccessReceiver);
-        ConsoleInputSource consoleInputSource = new ConsoleInputSource(consoleInputReceiver);
-
-        // Генерируем события
-        consoleOutputSource.generateEvent();
-        arrayAccessSource.generateEvent();
-        consoleInputSource.generateEvent();
-    }
-}
-
-*/

@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="Update laba3">
+    <list default="true" id="ee8e5fbf-9061-4580-89b3-abbb12410858" name="Changes" comment="Update laba3 (firs version)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/laba3/Laba3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/laba3/Laba3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/laba3/logger.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/laba3/logger.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,45 +33,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.JavaApplication12.executor": "Run",
-    "Application.JavaApplication13.executor": "Run",
-    "Application.Laba1.executor": "Run",
-    "Application.Laba1_2.Laba2.executor": "Run",
-    "Application.Laba2.executor": "Run",
-    "Application.Laba2_test1.executor": "Run",
-    "Application.Laba3.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Net.executor": "Run",
-    "Application.TCPClient.executor": "Run",
-    "Application.TCPServer.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Application.TestEvent.executor": "Run",
-    "Application.TestExc.executor": "Run",
-    "Application.TestInterface.executor": "Run",
-    "Application.TestInterface2.executor": "Run",
-    "Application.TestMyExc.executor": "Run",
-    "Application.TestThread.executor": "Run",
-    "Application.UDPClient.executor": "Run",
-    "Application.UDPServer.executor": "Run",
-    "Application.laba1_2.Laba2.executor": "Run",
-    "Application.tets.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/bars/Chic-chic",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.JavaApplication12.executor&quot;: &quot;Run&quot;,
+    &quot;Application.JavaApplication13.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Laba1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Laba1_2.Laba2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Laba2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Laba2_test1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Laba3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Net.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TCPClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TCPServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestEvent.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestExc.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestInterface.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestInterface2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestMyExc.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestThread.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UDPClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UDPServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.laba1_2.Laba2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.tets.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/bars/Chic-chic&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\java_labs\java_labs\src\laba3" />
@@ -191,7 +192,8 @@
       <workItem from="1739518245818" duration="2748000" />
       <workItem from="1739526019997" duration="902000" />
       <workItem from="1739526948058" duration="1635000" />
-      <workItem from="1739533486339" duration="7364000" />
+      <workItem from="1739533486339" duration="8533000" />
+      <workItem from="1739717075660" duration="8026000" />
     </task>
     <task id="LOCAL-00001" summary="Done Laba1_2 &amp; Laba3">
       <option name="closed" value="true" />
@@ -225,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739526181608</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update laba3 (firs version)">
+      <option name="closed" value="true" />
+      <created>1739544770561</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739544770561</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +245,7 @@
     <MESSAGE value="Done Laba1_2 &amp; Laba3" />
     <MESSAGE value="Done examples for laba4" />
     <MESSAGE value="Update laba3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update laba3" />
+    <MESSAGE value="Update laba3 (firs version)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update laba3 (firs version)" />
   </component>
 </project>
