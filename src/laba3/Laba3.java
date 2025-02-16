@@ -40,11 +40,88 @@ interface IConsoleInputEvent {
  }
  */
 
+
 // Источиники для каждого события
 
+abstract class EventSource<TEventHandler> {
+    protected TEventHandler eventHandler;
+    protected List<String> deferredMessages = new ArrayList<>();
+
+    protected EventSource(TEventHandler eventHandler) {
+        this.eventHandler = eventHandler;
+    }
+
+    public void generateEvent(String message, String filePath) {
+        if (filePath == null || filePath.isEmpty()) {
+            deferredMessages.add(message);
+            handleEvent(message, null);
+        } else {
+            handleEvent(message, filePath);
+        }
+    }
+
+    public void processDeferredMessages(String filePath) {
+        Collections.reverse(deferredMessages);
+        for (String message : deferredMessages) {
+            handleDeferredEvent(message, filePath, Boolean.TRUE);
+        }
+        deferredMessages.clear();
+    }
+
+    protected abstract void handleEvent(String message, String filePath);
+    protected abstract void handleDeferredEvent(String message, String filePath, Boolean... isDeferredMessage);
+}
+
+class ConsoleOutputSource extends EventSource<IConsoleOutputEvent> {
+    ConsoleOutputSource(IConsoleOutputEvent eventHandler) {
+        super(eventHandler);
+    }
+
+    @Override
+    protected void handleEvent(String message, String filePath) {
+        eventHandler.handleConsoleOutput(message, filePath);
+    }
+
+    @Override
+    protected void handleDeferredEvent(String message, String filePath, Boolean... isDeferredMessage) {
+        eventHandler.handleConsoleOutput(message, filePath, Boolean.TRUE);
+    }
+}
+
+class ArrayAccessSource extends EventSource<IArrayAccessEvent> {
+    ArrayAccessSource(IArrayAccessEvent eventHandler) {
+        super(eventHandler);
+    }
+
+    @Override
+    protected void handleEvent(String message, String filePath) {
+        eventHandler.handleArrayAccess(message, filePath);
+    }
+
+    @Override
+    protected void handleDeferredEvent(String message, String filePath, Boolean... isDeferredMessage) {
+        eventHandler.handleArrayAccess(message, filePath, Boolean.TRUE);
+    }
+}
+
+class ConsoleInputSource extends EventSource<IConsoleInputEvent> {
+    ConsoleInputSource(IConsoleInputEvent eventHandler) {
+        super(eventHandler);
+    }
+
+    @Override
+    protected void handleEvent(String message, String filePath) {
+        eventHandler.handleConsoleInput(message, filePath);
+    }
+
+    @Override
+    protected void handleDeferredEvent(String message, String filePath, Boolean... isDeferredMessage) {
+        eventHandler.handleConsoleInput(message, filePath, Boolean.TRUE);
+    }
+}
 
 // Источник события для вывода на консоль
-class ConsoleOutputSource {
+/*class ConsoleOutputSource {
     IConsoleOutputEvent iEventHandler;
     List<String> deferredMessages = new ArrayList<>();
 
@@ -123,6 +200,7 @@ class ConsoleInputSource {
         deferredMessages.clear();
     }
 }
+*/
 
 /*
 class Receiver implements IEv {// Класс приёмника события
@@ -133,8 +211,69 @@ class Receiver implements IEv {// Класс приёмника события
 */
 
 
-// Приемник для обработки события вывода на консоль
+// Приемники
+abstract class AbstractEventReceiver {
+    private final String eventPrefix;
 
+    AbstractEventReceiver(String eventPrefix) {
+        this.eventPrefix = eventPrefix;
+    }
+
+    protected void handleEvent(String message, String filePath, Boolean... isDeferredMessage) {
+        final boolean isDeferred = isDeferredMessage.length > 0 && isDeferredMessage[0];
+
+        // Логика вывода в консоль
+        if (!isDeferred || filePath == null) {
+            // NOTE: для желтенького цвета (\u001B[33m - ANSI escape sequence)
+            System.out.println("\u001B[33m" + eventPrefix + message + "\u001B[0m");
+        }
+
+        // Логика записи в файл
+        if (filePath != null) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+                writer.write(message);
+                writer.newLine();
+            } catch (IOException e) {
+                System.err.println("Ошибка записи в файл [" + filePath + "]: " + e.getMessage());
+            }
+        }
+    }
+}
+
+class ConsoleOutputReceiver extends AbstractEventReceiver implements IConsoleOutputEvent {
+    ConsoleOutputReceiver() {
+        super("Обращение к потоку вывода на консоль: ");
+    }
+
+    @Override
+    public void handleConsoleOutput(String message, String filePath, Boolean... isDeferredMessage) {
+        handleEvent(message, filePath, isDeferredMessage);
+    }
+}
+
+class ArrayAccessReceiver extends AbstractEventReceiver implements IArrayAccessEvent {
+    ArrayAccessReceiver() {
+        super("Обращение к массиву: ");
+    }
+
+    @Override
+    public void handleArrayAccess(String message, String filePath, Boolean... isDeferredMessage) {
+        handleEvent(message, filePath, isDeferredMessage);
+    }
+}
+
+class ConsoleInputReceiver extends AbstractEventReceiver implements IConsoleInputEvent {
+    ConsoleInputReceiver() {
+        super("Обращение к потоку ввода с консоли: ");
+    }
+
+    @Override
+    public void handleConsoleInput(String message, String filePath, Boolean... isDeferredMessage) {
+        handleEvent(message, filePath, isDeferredMessage);
+    }
+}
+
+/*
 // Приемник для обработки события вывода на консоль
 class ConsoleOutputReceiver implements IConsoleOutputEvent {
 
@@ -203,6 +342,7 @@ class ConsoleInputReceiver implements IConsoleInputEvent {
         }
     }
 }
+ */
 
 // c:\java_labs\java_labs\src\laba3\input.txt
 
@@ -268,7 +408,7 @@ public class Laba3 {
         int evenNegativeSum = 0;
         int oddNegativeSum = 0;
 
-        arrayAccessSource.generateEvent("обращение к массиву", logFilePath);
+        arrayAccessSource.generateEvent("вычисление суммы четных и отрицательных чисел и суммы нечетных и отрицательных чисел", logFilePath);
         for (int num : numbers) {
             if (num < 0) {
                 if (num % 2 == 0) {
