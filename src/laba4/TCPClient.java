@@ -2,40 +2,70 @@ package laba4;
 
 import java.io.*;
 import java.net.*;
-public class TCPClient implements Runnable {
-    public static final int PORT = 2500;
-    public static final String HOST = "localhost";
-    public static final int CLIENT_COUNT = 6;
-    public static final int READ_BUFFER_SIZE = 10;
-    private String name = null;
-    public TCPClient(String s){
-        name = s;
-    }
-    public void run(){
-        char[] readed = new char[READ_BUFFER_SIZE];
-        StringBuffer strBuff = new StringBuffer();
-        try{Socket socket = new Socket(HOST, PORT);
-            InputStream in = socket.getInputStream();
-            InputStreamReader reader = new InputStreamReader(in);
-            while(true){
-                int count = reader.read(readed, 0, READ_BUFFER_SIZE);
-                if(count == -1) break;
-                strBuff.append(readed, 0, count);
-                Thread.yield();
+import java.util.Scanner;
+
+public class TCPClient {
+    private static String host; // Хост из командной строки
+    private static int port; // Порт из командной строки
+    private static String logFilePath; // Путь к файлу журнала
+
+    public static void main(String[] args) {
+        if (args.length < 3) {
+            System.err.println("Ошибка: укажите хост, порт и путь к файлу журнала как аргументы командной строки.");
+            System.err.println("Пример: java TCPClient 127.0.0.1 3000 /path/to/client.log");
+            System.exit(1);
+        }
+
+        host = args[0];
+        try {
+            port = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.err.println("Ошибка: порт должен быть числом.");
+            System.exit(1);
+        }
+        logFilePath = args[2];
+
+        Scanner scanner = new Scanner(System.in);
+        PrintWriter logWriter = null;
+
+        try {
+            Socket socket = new Socket(host, port);
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+
+            try {
+                logWriter = new PrintWriter(new FileWriter(logFilePath, true), true);
+            } catch (IOException e) {
+                System.err.println("Ошибка при открытии файла журнала: " + e.toString());
             }
-        } catch (UnknownHostException e) {
-            System.err.println("Исключение: " + e.toString());
+
+            System.out.println("\u001B[33m" + "Введите число и операцию (+, -, =):" + "\u001B[0m");
+
+            while (true) {
+                String input = scanner.nextLine();
+                writer.println(input);
+
+                String response = reader.readLine();
+                if (response != null) {
+                    System.out.println("\u001B[33m" + "Ответ от сервера: " + response+ "\u001B[0m");
+                    if (logWriter != null) {
+                        logWriter.println("Получено от сервера: " + response);
+                    } else {
+                        System.err.println("Не удалось записать в журнал: " + response);
+                    }
+                } else {
+                    break;
+                }
+            }
+
         } catch (IOException e) {
             System.err.println("Исключение: " + e.toString());
-        }
-        System.out.println("Клиент " + name + " прочёл: " + strBuff.toString());
-    }
-    public static void main(String[] args) {
-        String name = "имя";
-        for(int i = 1; i <= CLIENT_COUNT; i++){
-            TCPClient ja = new TCPClient(name+i);
-            Thread th = new Thread(ja);
-            th.start();
+        } finally {
+            if (logWriter != null) {
+                logWriter.close();
+            }
+            scanner.close();
         }
     }
 }
