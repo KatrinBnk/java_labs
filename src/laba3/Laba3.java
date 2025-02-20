@@ -62,7 +62,6 @@ class ConsoleOutputSource {
     }
 
     public void processDeferredMessages(String filePath) {
-        Collections.reverse(deferredMessages);
         for (String message : deferredMessages) {
             iEventHandler.handleConsoleOutput(message, filePath, Boolean.TRUE);
         }
@@ -87,14 +86,6 @@ class ArrayAccessSource {
             iEventHandler.handleArrayAccess(message, filePath);
         }
     }
-
-    public void processDeferredMessages(String filePath) {
-        Collections.reverse(deferredMessages);
-        for (String message : deferredMessages) {
-            iEventHandler.handleArrayAccess(message, filePath, Boolean.TRUE);
-        }
-        deferredMessages.clear();
-    }
 }
 
 // Источник события для ввода с консоли
@@ -116,7 +107,6 @@ class ConsoleInputSource {
     }
 
     public void processDeferredMessages(String filePath) {
-        Collections.reverse(deferredMessages);
         for (String message : deferredMessages) {
             iEventHandler.handleConsoleInput(message, filePath, Boolean.TRUE);
         }
@@ -134,8 +124,6 @@ class Receiver implements IEv {// Класс приёмника события
 
 
 // Приемник для обработки события вывода на консоль
-
-// Приемник для обработки события вывода на консоль
 class ConsoleOutputReceiver implements IConsoleOutputEvent {
 
     public void handleConsoleOutput(String message, String filePath, Boolean... isDeferredMessage) {
@@ -148,7 +136,7 @@ class ConsoleOutputReceiver implements IConsoleOutputEvent {
             // Записываем в файл
             try {
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-                    writer.write(message);
+                    writer.write("Обращение к потоку вывода на консоль: " + message );
                     writer.newLine();
                 }
             } catch (IOException e) {
@@ -168,11 +156,10 @@ class ArrayAccessReceiver implements IArrayAccessEvent {
         }
 
         if (filePath != null) {
-            // Записываем в файл
             try {
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-                    writer.write(message);
-                    writer.newLine();  // Перевод строки
+                    writer.write("Обращение к массиву: " + message );
+                    writer.newLine();
                 }
             } catch (IOException e) {
                 System.out.println("Ошибка при записи в файл: " + e.getMessage());
@@ -189,13 +176,11 @@ class ConsoleInputReceiver implements IConsoleInputEvent {
             System.out.println("\u001B[33m" + "Обращение к потоку ввода с консоли: " + message + "\u001B[0m");
         }
 
-        // Записываем в файл
         if (filePath != null) {
-            // Записываем в файл
             try {
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-                    writer.write(message);
-                    writer.newLine();  // Перевод строки
+                    writer.write("Обращение к потоку ввода с консоли: " + message);
+                    writer.newLine();
                 }
             } catch (IOException e) {
                 System.out.println("Ошибка при записи в файл: " + e.getMessage());
@@ -262,7 +247,8 @@ public class Laba3 {
                 br.close();
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка при чтении файла: " + e.getMessage());
+            return;
         }
 
         int evenNegativeSum = 0;
