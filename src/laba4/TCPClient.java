@@ -4,15 +4,20 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
+/* NOTE: задание на работу (вариант 2)
+0 - TCP протокол
+2 - адрес и порт сервера в клиенте из командной строки
+2 - "журнал клиента" (путь к нему задается) из командной строки
+*/
+
 public class TCPClient {
-    private static String host; // Хост из командной строки
-    private static int port; // Порт из командной строки
-    private static String logFilePath; // Путь к файлу журнала
+    private static String host;
+    private static int port;
+    private static String logFilePath;
 
     public static void main(String[] args) {
         if (args.length < 3) {
             System.err.println("Ошибка: укажите хост, порт и путь к файлу журнала как аргументы командной строки.");
-            System.err.println("Пример: java TCPClient 127.0.0.1 3000 /path/to/client.log");
             System.exit(1);
         }
 
@@ -27,10 +32,10 @@ public class TCPClient {
 
         Scanner scanner = new Scanner(System.in);
         PrintWriter logWriter = null;
+        Socket socket = null;
 
         try {
-            Socket socket = new Socket(host, port);
-
+            socket = new Socket(host, port);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
@@ -40,15 +45,21 @@ public class TCPClient {
                 System.err.println("Ошибка при открытии файла журнала: " + e.toString());
             }
 
-            System.out.println("\u001B[33m" + "Введите число и операцию (+, -, =):" + "\u001B[0m");
+            System.out.println("\u001B[33m" + "Введите число и операцию (+, -, =) или 'exit' для завершения:" + "\u001B[0m");
 
             while (true) {
                 String input = scanner.nextLine();
-                writer.println(input);
 
+                // Проверка на команду выхода
+                if ("exit".equalsIgnoreCase(input)) {
+                    writer.println(input);
+                    break;
+                }
+
+                writer.println(input);
                 String response = reader.readLine();
                 if (response != null) {
-                    System.out.println("\u001B[33m" + "Ответ от сервера: " + response+ "\u001B[0m");
+                    System.out.println("\u001B[36m" + "Ответ от сервера: " + response+ "\u001B[0m");
                     if (logWriter != null) {
                         logWriter.println("Получено от сервера: " + response);
                     } else {
@@ -64,6 +75,13 @@ public class TCPClient {
         } finally {
             if (logWriter != null) {
                 logWriter.close();
+            }
+            if (socket != null) {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    System.err.println("Ошибка при закрытии сокета: " + e.toString());
+                }
             }
             scanner.close();
         }

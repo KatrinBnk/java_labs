@@ -4,10 +4,16 @@ import java.io.*;
 import java.net.*;
 import java.util.Properties;
 
+/* NOTE: задание на работу (вариант 2)
+0 - TCP протокол
+3 - указание порта для сервера из файла настроек
+2 - "журнал сервера" (путь к нему задается) из командной строки
+*/
+
 public class TCPServer {
     private ServerSocket servSocket;
-    private String logFilePath; // Путь к файлу журнала
-    private int port; // Порт из файла настроек
+    private String logFilePath;
+    private int port;
 
     public static void main(String[] args) {
         if (args.length < 1) {
@@ -23,7 +29,6 @@ public class TCPServer {
     public TCPServer(String logFilePath) {
         this.logFilePath = logFilePath;
 
-        // Чтение порта из файла настроек
         try {
             Properties props = new Properties();
             props.load(new FileInputStream("server.properties"));
@@ -33,7 +38,6 @@ public class TCPServer {
             System.exit(1);
         }
 
-        // Инициализация ServerSocket с использованием порта из файла
         try {
             servSocket = new ServerSocket(port);
         } catch (IOException e) {
@@ -58,7 +62,7 @@ public class TCPServer {
         private Socket socket;
         private double result = 0;
         private char lastOperation = '\0';
-        private PrintWriter logWriter; // Для записи в файл журнала
+        private PrintWriter logWriter;
 
         public Listener(Socket socket) {
             this.socket = socket;
@@ -82,6 +86,12 @@ public class TCPServer {
                         logWriter.println("Получено: " + input);
                     } else {
                         System.err.println("Не удалось записать в журнал: " + input);
+                    }
+
+                    // Проверка на команду выхода
+                    if ("exit".equalsIgnoreCase(input)) {
+                        writer.println("Соединение завершено.");
+                        break; // Завершаем цикл для этого клиента
                     }
 
                     if (input.isEmpty() || "+-=".indexOf(input.charAt(input.length() - 1)) == -1) {
